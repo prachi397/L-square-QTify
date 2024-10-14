@@ -1,3 +1,5 @@
-.App {
-  text-align: center;
+:root {
+  --color-black: #000000; 
+  --color-green: #00ff00; 
+  --color-primary: #34C94B;
 }
