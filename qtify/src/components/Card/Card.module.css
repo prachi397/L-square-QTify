@@ -1,0 +1,70 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 230px;
+    background-color: #000;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+    border-radius: 0 !important;
+  }
+  
+  .cardMediaContainer {
+    position: relative;
+    background-color: black;
+  }
+  
+  .cardImage {
+    object-fit: cover;
+    width: 90% !important;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    border-radius: 10px 10px 0px 0px;
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    padding-top: 0px !important;
+    background-color: #000; 
+  }
+  
+  .albumName {
+    color: white; 
+    font-size: 1.2rem;
+  }
+  
+  .chip {
+    background-color: #000 !important;
+    color: white !important;
+    margin-bottom: 8px;
+    border: 1px solid white; 
+  }
+  .chipdata{
+    background-color: white;
+    width: 85%;
+    padding: 6px;
+    border-radius: 0px 0px 10px 10px;
+  }
+  .albumName{
+    font-weight: 700 !important;
+  }
+  
+  .subtitle {
+    color: white; 
+    font-size: 1.1rem !important;
+    margin-top: 7px;
+  }
+  
