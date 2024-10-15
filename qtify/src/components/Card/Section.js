@@ -117,7 +117,7 @@ const Section = ({ sectionType }) => {
             }}
             onClick={handleCollapse}
           >
-            {isCollapsed ? "Show all" : "Collapse"}
+            {isCollapsed ? "Show All" : "Collapse"}
           </Button>
         ) : (
           <Tabs
