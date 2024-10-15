@@ -6,10 +6,10 @@ import styles from "./Section.module.css";
 import Carousel from "../Carousel/Carousel";
 
 const Section = ({ sectionType }) => {
-  const [cardData, setCardData] = useState([]);  //for top albums
-  const [newAlbumData, setNewAlbumData] = useState([]); 
-  const [originalSongData, setOriginalSongData] = useState([]); 
-  const [songData, setSongData] = useState([]); 
+  const [cardData, setCardData] = useState([]); //for top albums
+  const [newAlbumData, setNewAlbumData] = useState([]);
+  const [originalSongData, setOriginalSongData] = useState([]);
+  const [songData, setSongData] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(sectionType === "newAlbums");
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
@@ -18,7 +18,7 @@ const Section = ({ sectionType }) => {
     if (sectionType === "albums") {
       fetchTopAlbums();
     } else if (sectionType === "newAlbums") {
-      fetchNewAlbums(); 
+      fetchNewAlbums();
     } else if (sectionType === "songs") {
       fetchSongs();
       fetchGenres();
@@ -41,7 +41,7 @@ const Section = ({ sectionType }) => {
     const url = "https://qtify-backend-labs.crio.do/albums/new";
     try {
       const resp = await axios.get(url);
-      setNewAlbumData(resp.data); 
+      setNewAlbumData(resp.data);
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +79,9 @@ const Section = ({ sectionType }) => {
     if (genre === "All") {
       setSongData(originalSongData);
     } else {
-      const filteredSongs = originalSongData.filter((song) => song.genre.key === genre);
+      const filteredSongs = originalSongData.filter(
+        (song) => song.genre.key === genre
+      );
       setSongData(filteredSongs);
     }
   };
@@ -108,10 +110,14 @@ const Section = ({ sectionType }) => {
         {sectionType === "albums" || sectionType === "newAlbums" ? (
           <Button
             variant="text"
-            style={{ color: "green", fontWeight: "bold", textTransform: "none" }}
+            style={{
+              color: "green",
+              fontWeight: "bold",
+              textTransform: "none",
+            }}
             onClick={handleCollapse}
           >
-            {isCollapsed ? "Show All" : "Collapse"}
+            {isCollapsed ? "Show all" : "Collapse"}
           </Button>
         ) : (
           <Tabs
