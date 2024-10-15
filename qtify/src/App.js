@@ -11,6 +11,7 @@ function App() {
        <Navbar/>
        <Hero/>
        <Section sectionType="albums"/>
+       <Section sectionType="newAlbums"/>
        <Section sectionType="songs"/>
        </BrowserRouter>
   );
