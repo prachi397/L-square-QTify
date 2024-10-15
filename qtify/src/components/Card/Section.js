@@ -6,20 +6,19 @@ import styles from "./Section.module.css";
 import Carousel from "../Carousel/Carousel";
 
 const Section = ({ sectionType }) => {
-  const [cardData, setCardData] = useState([]); // For Top Albums
-  const [newAlbumData, setNewAlbumData] = useState([]); // For New Albums
-  const [originalSongData, setOriginalSongData] = useState([]); // For Songs
-  const [songData, setSongData] = useState([]); // Filtered Songs
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [cardData, setCardData] = useState([]);  //for top albums
+  const [newAlbumData, setNewAlbumData] = useState([]); 
+  const [originalSongData, setOriginalSongData] = useState([]); 
+  const [songData, setSongData] = useState([]); 
+  const [isCollapsed, setIsCollapsed] = useState(sectionType === "newAlbums");
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
 
-  // Fetch data based on the section type
   useEffect(() => {
     if (sectionType === "albums") {
       fetchTopAlbums();
     } else if (sectionType === "newAlbums") {
-      fetchNewAlbums(); // Fetch New Albums
+      fetchNewAlbums(); 
     } else if (sectionType === "songs") {
       fetchSongs();
       fetchGenres();
@@ -42,7 +41,7 @@ const Section = ({ sectionType }) => {
     const url = "https://qtify-backend-labs.crio.do/albums/new";
     try {
       const resp = await axios.get(url);
-      setNewAlbumData(resp.data); // Store New Albums Data
+      setNewAlbumData(resp.data); 
     } catch (err) {
       console.log(err);
     }
@@ -85,7 +84,7 @@ const Section = ({ sectionType }) => {
     }
   };
 
-  // Toggle Collapse
+  // Toggle Collapse button
   function handleCollapse() {
     setIsCollapsed(!isCollapsed);
   }
@@ -136,28 +135,19 @@ const Section = ({ sectionType }) => {
         )}
       </Grid>
 
-      {/* Conditional Rendering for Grid and Carousel */}
       {isCollapsed ? (
-        <>
-          {(sectionType === "albums" || sectionType === "newAlbums") && (
-            <Carousel
-              cardData={sectionType === "albums" ? cardData : newAlbumData}
-              type={sectionType === "albums" ? "album" : "newAlbum"}
-            />
-          )}
-        </>
+        <Carousel
+          cardData={sectionType === "albums" ? cardData : newAlbumData}
+          type={sectionType === "albums" ? "album" : "newAlbum"}
+        />
       ) : (
-        <>
-          {(sectionType === "albums" || sectionType === "newAlbums") && (
-            <Grid container spacing={3} className={styles.gridContainer}>
-              {(sectionType === "albums" ? cardData : newAlbumData).map((ele) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={ele.id}>
-                  <Card data={ele} type="album" />
-                </Grid>
-              ))}
+        <Grid container spacing={3} className={styles.gridContainer}>
+          {(sectionType === "albums" ? cardData : newAlbumData).map((ele) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={ele.id}>
+              <Card data={ele} type="album" />
             </Grid>
-          )}
-        </>
+          ))}
+        </Grid>
       )}
 
       {sectionType === "songs" && <Carousel cardData={songData} type="songs" />}
