@@ -10,8 +10,10 @@ const Section = ({ sectionType }) => {
   const [newAlbumData, setNewAlbumData] = useState([]);
   const [originalSongData, setOriginalSongData] = useState([]);
   const [songData, setSongData] = useState([]);
-  const [isCollapsed, setIsCollapsed] = useState(sectionType === "newAlbums");
-  const [genres, setGenres] = useState([]);
+  // const [isCollapsed, setIsCollapsed] = useState(sectionType === "newAlbums");
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  
+   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
 
   useEffect(() => {
@@ -117,7 +119,7 @@ const Section = ({ sectionType }) => {
             }}
             onClick={handleCollapse}
           >
-            {isCollapsed ? "Show All" : "Collapse"}
+            {!isCollapsed ? "Show All" : "Collapse"}
           </Button>
         ) : (
           <Tabs
