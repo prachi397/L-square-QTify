@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import Card from "../Card/Card";
 import { Navigation } from "swiper/modules";
 
-const Carousel = ({cardData}) =>{
+const Carousel = ({cardData,type}) =>{
     return (
         <Swiper
           modules={[Navigation]} 
@@ -20,7 +20,7 @@ const Carousel = ({cardData}) =>{
         >
           {cardData.map((card) => (
             <SwiperSlide key={card.id}>
-              <Card data={card} />
+              <Card data={card} type={type}/>
             </SwiperSlide>
           ))}
         </Swiper>

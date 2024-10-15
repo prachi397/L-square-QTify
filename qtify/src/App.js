@@ -10,7 +10,8 @@ function App() {
        <BrowserRouter>
        <Navbar/>
        <Hero/>
-       <Section/>
+       <Section sectionType="albums"/>
+       <Section sectionType="songs"/>
        </BrowserRouter>
   );
 }

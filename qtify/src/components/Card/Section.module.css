@@ -10,4 +10,19 @@
   .gridContainer {
     margin-top: 20px;
   }
+  .tabs {
+    border-bottom: 2px solid green !important; 
+  }
+  
+  .tab {
+    color: white !important;
+  }
+  
+  .tab:hover {
+    color: green !important; 
+  }
+  
+  .selectedTab{
+    color: white !important; 
+  }
   
